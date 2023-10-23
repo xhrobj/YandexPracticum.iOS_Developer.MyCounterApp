@@ -5,7 +5,7 @@
 //  Created by Mikhail Eliseev on 22.10.2023.
 //
 
-class Logger {
+final class Logger {
     private var storage: [LogEntry] = []
     
     func add(event: LogEvent) {

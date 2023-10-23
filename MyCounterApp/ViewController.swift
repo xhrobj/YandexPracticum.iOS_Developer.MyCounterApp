@@ -7,29 +7,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     private let counterLabelPrefix = "Значение счётчика: "
     private let historyTitle = "История изменений:\n\n"
-    
     private let counter = Counter()
+    
+    // MARK: - IBOutlets
 
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var historyTextView: UITextView!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var historyTextView: UITextView!
     
     // MARK: - IBActions
     
-    @IBAction func decrementButtoTapped() {
+    @IBAction private func decrementButtoTapped() {
         counter.decrement()
         updateView()
     }
     
-    @IBAction func incrementButtonTapped() {
+    @IBAction private func incrementButtonTapped() {
         counter.increment()
         updateView()
         
     }
     
-    @IBAction func resetButtonTapped() {
+    @IBAction private func resetButtonTapped() {
         counter.reset()
         updateView()
     }
@@ -38,19 +39,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         updateView()
     }
 }
 
 private extension ViewController {
-    private func updateView() {
+    func updateView() {
         counterLabel.text = counterLabelPrefix + String(counter.count)
         historyTextView.text = historyTitle + counter.history
         scrollHistoryToLastLineAnimated()
     }
     
-    private func scrollHistoryToLastLineAnimated() {
+    func scrollHistoryToLastLineAnimated() {
         guard let caretPositionRange = historyTextView.selectedTextRange else { return }
 
         historyTextView.scrollRectToVisible(

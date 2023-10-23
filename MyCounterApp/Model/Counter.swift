@@ -5,7 +5,7 @@
 //  Created by Mikhail Eliseev on 22.10.2023.
 //
 
-class Counter {
+final class Counter {
     private var  logger = Logger()
     private (set) var count = 0
     
